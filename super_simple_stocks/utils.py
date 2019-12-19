@@ -1,5 +1,4 @@
-
-def convert_percentage_string_to_factor(raw_value: str):
+def convert_percentage_string_to_factor(raw_value: str) -> float:
     try:
         return int(raw_value.replace('%', '')) / 100.0
     except Exception as e:
