@@ -54,7 +54,8 @@ components in isolation.
 ## Basic Example tying it all together
 
 A basic example which shows on a high level how all components can be
-tied together is in `demo.py`. 
+tied together is in `demo.py`. You can run it with `python demo.py`
+in your virtual environment.
 
 ## Potential Improvements if this was a real project
 
