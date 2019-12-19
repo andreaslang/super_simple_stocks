@@ -4,6 +4,9 @@ from typing import NamedTuple, Optional
 
 
 class StockExchangeInfo(NamedTuple):
+    """
+    Dividend related information for a particular stock.
+    """
     stock_symbol: str
     type: str
     last_dividend_per_share: Optional[int]
@@ -30,6 +33,9 @@ class StockExchangeInfo(NamedTuple):
 
 
 class Trade(NamedTuple):
+    """
+    Single trade record
+    """
     stock_symbol: str
     quantity: int
     is_sale: bool

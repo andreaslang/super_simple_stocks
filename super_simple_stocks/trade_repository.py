@@ -8,6 +8,9 @@ from super_simple_stocks.model import Trade
 
 
 class TradeRepository:
+    """
+    Trade repository to record trades and retrieve summary information
+    """
 
     @abstractmethod
     def record_trade(self, trade: Trade):

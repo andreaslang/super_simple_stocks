@@ -15,6 +15,9 @@ _EXPECTED_HEADER_COLUMNS = [_STOCK_SYMBOL, _TYPE, _LAST_DIVIDEND, _FIXED_DIVIDEN
 
 
 class Exchange:
+    """
+    Holds information about stocks relating to dividends and related metrics.
+    """
 
     @abstractmethod
     def get_stock_data(self, stock_name) -> StockExchangeInfo:
