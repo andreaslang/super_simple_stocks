@@ -1,5 +1,7 @@
+import math
 from abc import abstractmethod
 from datetime import datetime, timedelta
+from functools import reduce
 from typing import Dict, List
 
 from super_simple_stocks.model import Trade
@@ -13,6 +15,10 @@ class TradeRepository:
 
     @abstractmethod
     def calculate_stock_price_in_window(self, stock_symbol, window: timedelta = timedelta(minutes=15)):
+        pass
+
+    @abstractmethod
+    def calculate_gbce_all_share_index_in_window(self, window: timedelta = timedelta(minutes=15)):
         pass
 
 
@@ -35,4 +41,18 @@ class InMemoryTradeRepository(TradeRepository):
         total_amount = sum(map(lambda trade: trade.price * trade.quantity, trades_in_time_window))
         total_quantity = sum(map(lambda trade: trade.quantity, trades_in_time_window))
         return total_amount / total_quantity
+
+    def calculate_gbce_all_share_index_in_window(self, window: timedelta = timedelta(minutes=15)):
+        # Calculating a product this large will almost certainly fail for any real example
+        # therefore we first move the nth root product of prices into (natural) log space, which means it is
+        # a sum of the logs divided by n and then we bring it back into normal space by using e^result.
+        price_product_in_log_space = reduce(
+            lambda agg_stock_price, stock_symbol: agg_stock_price + math.log(self.calculate_stock_price_in_window(
+                stock_symbol, window
+            )),
+            self._repository.keys(),
+            0.0
+        )
+        print(f"Price Product {price_product_in_log_space}")
+        return math.e**(price_product_in_log_space / len(self._repository))
 
