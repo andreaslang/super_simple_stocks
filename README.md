@@ -56,3 +56,19 @@ components in isolation.
 A basic example which shows on a high level how all components can be
 tied together is in `demo.py`. 
 
+## Potential Improvements if this was a real project
+
+1. Aside for unit tests, I tried to not use a wide variety on non-base
+python libraries. A lot of the tasks in here can be performed better
+and more performance using specialised libraries or tools. For example
+while staying in python memory I could have used pandas/numpy to 
+vectorise my operations (i.e. have them run in C) and to simplify tasks
+like CSV loading. Given this is a demo of my skills this would not have
+been very useful here. Also in a practical use case, having a trade
+database for example, some of my code would have been moved to SQL.
+2. Streaming is not explicitly dealt with here. There are libraries
+like Apache Spark Structured streaming which could help to make 
+calculations directly at the stream level. Again, no point for this
+demo.
+
+
