@@ -31,8 +31,8 @@ class StockExchangeInfo(NamedTuple):
 
 class Trade(NamedTuple):
     stock_symbol: str
-    timestamp: datetime
     quantity: int
     is_sale: bool
     price: float
+    timestamp: datetime = datetime.now()
 

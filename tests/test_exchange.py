@@ -1,4 +1,4 @@
-from super_simple_stocks.beverage_exchange import FileBeverageExchange
+from super_simple_stocks.exchange import FileExchange
 
 import os
 
@@ -8,7 +8,7 @@ TEST_FILE = os.path.join(os.path.dirname(__file__), 'test_data.csv')
 
 
 def test_file_beverage_exchange():
-    exchange = FileBeverageExchange(TEST_FILE)
+    exchange = FileExchange(TEST_FILE)
 
     assert exchange.get_stock_data('TEA') == StockExchangeInfo(
         stock_symbol='TEA',

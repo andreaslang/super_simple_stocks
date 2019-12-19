@@ -37,7 +37,6 @@ class InMemoryTradeRepository(TradeRepository):
         list_of_all_trades = self._repository[stock_symbol]
         fifteen_minutes_ago = datetime.now() - window
         trades_in_time_window = list(filter(lambda trade: trade.timestamp >= fifteen_minutes_ago, list_of_all_trades))
-        print(list(trades_in_time_window))
         total_amount = sum(map(lambda trade: trade.price * trade.quantity, trades_in_time_window))
         total_quantity = sum(map(lambda trade: trade.quantity, trades_in_time_window))
         return total_amount / total_quantity
@@ -53,6 +52,5 @@ class InMemoryTradeRepository(TradeRepository):
             self._repository.keys(),
             0.0
         )
-        print(f"Price Product {price_product_in_log_space}")
         return math.e**(price_product_in_log_space / len(self._repository))
 

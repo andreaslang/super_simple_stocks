@@ -1,6 +1,7 @@
 import csv
 from abc import abstractmethod
 from functools import lru_cache
+from typing import List
 
 from super_simple_stocks.model import StockExchangeInfo
 from super_simple_stocks.utils import convert_percentage_string_to_factor
@@ -13,14 +14,18 @@ _STOCK_SYMBOL = 'Stock Symbol'
 _EXPECTED_HEADER_COLUMNS = [_STOCK_SYMBOL, _TYPE, _LAST_DIVIDEND, _FIXED_DIVIDEND, _PAR_VALUE]
 
 
-class BeverageExchange:
+class Exchange:
 
     @abstractmethod
     def get_stock_data(self, stock_name) -> StockExchangeInfo:
         pass
 
+    @abstractmethod
+    def get_stock_names(self) -> StockExchangeInfo:
+        pass
 
-class FileBeverageExchange(BeverageExchange):
+
+class FileExchange(Exchange):
 
     def __init__(self, csv_file_path_as_it_is_in_assignment):
         with open(csv_file_path_as_it_is_in_assignment) as csv_file:
@@ -60,3 +65,6 @@ class FileBeverageExchange(BeverageExchange):
 
     def get_stock_data(self, stock_name) -> StockExchangeInfo:
         return self._exchange_info_repository[stock_name]
+
+    def get_stock_names(self) -> List[str]:
+        return list(self._exchange_info_repository.keys())
