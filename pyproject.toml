@@ -1,0 +1,19 @@
+[build-system]
+requires = [ "poetry>=1.0",]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "super_simple_stocks"
+version = "0.1"
+description = "Tech Demo for a super simple stock system."
+repository = "https://github.com/andreaslang/super_simple_stocks"
+authors = [ "andreas.al.lang@gmail.com",]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.1"
+pytest-cov = "^2.7"
+coverage = "^4.5"
