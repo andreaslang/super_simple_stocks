@@ -7,7 +7,7 @@ name = "super_simple_stocks"
 version = "0.1"
 description = "Tech Demo for a super simple stock system."
 repository = "https://github.com/andreaslang/super_simple_stocks"
-authors = [ "andreas.al.lang@gmail.com",]
+authors = [ "Andreas Lang <andreas.al.lang@gmail.com>",]
 readme = "README.md"
 
 [tool.poetry.dependencies]

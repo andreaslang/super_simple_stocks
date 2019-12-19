@@ -13,10 +13,10 @@ First setup a virtual environment using your desired python version
 installation:
 
 ```sh
-python3 -m venv ~/.venv
+python3 -m venv .venv
 # or the following if python 3 is the default:
-# python -m venv ~/.venv
-source ~/.venv/bin/activate
+# python -m venv .venv
+source .venv/bin/activate
 ```
 
 You will then need to install the dependencies using `poetry install`. 
