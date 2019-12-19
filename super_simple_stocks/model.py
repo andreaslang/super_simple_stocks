@@ -1,3 +1,4 @@
+from datetime import datetime
 from functools import lru_cache
 from typing import NamedTuple, Optional
 
@@ -26,3 +27,12 @@ class StockExchangeInfo(NamedTuple):
     def calculate_pe_ratio(self, ticker_price: float) -> Optional[float]:
         dividend = self.calculate_dividend()
         return ticker_price / dividend if dividend != 0.0 else None
+
+
+class Trade(NamedTuple):
+    stock_symbol: str
+    timestamp: datetime
+    quantity: int
+    is_sale: bool
+    price: float
+
